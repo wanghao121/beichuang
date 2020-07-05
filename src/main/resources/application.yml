@@ -1,0 +1,44 @@
+
+server:
+  # 默认服务端口
+  port: 80
+  tomcat:
+    uri-encoding: utf-8
+
+# Spring配置
+spring:
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
+
+  # 配置数据源
+  datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driverClassName: com.mysql.jdbc.Driver
+      # Mysql
+      #url: jdbc:mysql://120.55.249.44:22001/test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      #username: root
+      #password: xplat
+      url: jdbc:mysql://rm-bp1480xs7w4j8du2ylo.mysql.rds.aliyuncs.com:3306/beichuang?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      username: whao
+      password: RM1vXsoLaKXVTYL8
+      initialSize: 1
+      minIdle: 3
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 30000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,slf4j
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+
+mybatis-plus:
+  configuration:
+#    mapUnderscoreToCamelCase: true
+    map-underscore-to-camel-case: true
