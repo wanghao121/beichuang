@@ -59,7 +59,8 @@
                                     <th>电话</th>
                                     <th>性别</th>
                                     <th>类型</th>
-                                    <th>帐号状态</th>
+                                    <th>状态</th>
+                                    <th>备注</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -67,13 +68,14 @@
                                     <td th:text="${user.userName}">张三</td>
                                     <td th:text="${user.loginName}">zhang</td>
                                     <td th:text="${user.phone}">131</td>
-                                    <!--<td th:text="${user.sex}">男</td>-->
-                                    <td th:switch="${user.sex}">
-                                        <span th:case="0">男</span>
-                                        <span th:case="1">女</span>
-                                    </td>>
-                                    <td th:text="${user.userType}">教师</td>
-                                    <td th:text="${user.status}">有效</td>
+                                    <td th:text="${user.sex}?'女':'男'"></td>
+                                    <td th:switch="${user.userType}">
+                                        <p th:case="T">老师</p>
+                                        <p th:case="S">销售</p>
+                                        <p th:case="*">其他</p>
+                                    </td>
+                                    <td th:text="${user.status}?'离职':'正常'">状态</td>
+                                    <td th:text="${user.remark}">131</td>
                                     <!--<td><a href="#" th:href="@{/update-Student(id=${stu.studentID})}" class="text-primary">修改</a></td>-->
                                 </tr>
                                 </tbody>
