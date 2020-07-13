@@ -2,6 +2,7 @@ package com.beichuang.crm.project.dao;
 
 import com.beichuang.crm.project.entity.User;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -21,4 +22,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     @Select("select * from sys_user where login_name <>'admin' ")
     List<User> selectUserList();
+
+    @Insert("insert into sys_user (user_name) values (#{userName}) ")
+    Integer addUser(User user);
 }

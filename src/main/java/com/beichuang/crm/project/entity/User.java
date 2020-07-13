@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.beichuang.crm.framework.util.enums.SexEnum;
+
 import java.io.Serializable;
 
 /**
@@ -105,9 +107,7 @@ public class User extends Model<User> {
         this.phone = phone;
     }
 
-    public int getSex() {
-        return sex;
-    }
+    public int getSex() { return sex; }
 
     public void setSex(int sex) {
         this.sex = sex;

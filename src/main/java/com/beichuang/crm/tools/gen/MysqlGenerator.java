@@ -52,9 +52,9 @@ public class MysqlGenerator {
                         // 自定义文件命名，注意 %s 会自动填充表实体属性！
                         .setMapperName("%sMapper")
                         .setXmlName("%sMapper")
-                        //.setServiceName("%sService")
-                        //.setServiceImplName("%sServiceImpl")
-                        //.setControllerName("%sController")
+                        .setServiceName("%sService")
+                        .setServiceImplName("%sServiceImpl")
+                        .setControllerName("%sController")
         ).setDataSource(
                 // 数据源配置
                 new DataSourceConfig()
@@ -116,7 +116,7 @@ public class MysqlGenerator {
                         .setParent("com.beichuang.crm." + customPath)// 自定义包路径
                         //.setController("controller")// 这里是控制器包名，默认 web
                         .setEntity("entity")
-                        //.setMapper("dao")
+                        .setMapper("dao")
                         //.setService("service")
                         //.setServiceImpl("service.impl")
                 //.setXml("mapper")

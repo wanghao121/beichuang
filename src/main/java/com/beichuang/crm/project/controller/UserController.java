@@ -5,8 +5,10 @@ import com.beichuang.crm.project.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -45,27 +47,28 @@ public class UserController {
         }
     }
 
-   /* @GetMapping("/select")
-    @ResponseBody
-    public User selectUser() {
-        // 查询 User
-        User exampleUser = userMapper.selectById(1);
-        return exampleUser;
-    }*/
-
     @GetMapping("/user/list")
     public String userList(Model model) {
         List<User> list = userMapper.selectUserList();
         model.addAttribute("userList", list);
-        return "user/list";
+        return "user/userlist";
     }
 
-    /*@PostMapping("/user/list")
-    @ResponseBody
-    public List<User> selectUserList() {
-        // 查询 User
-        List<User> list = userMapper.selectUserList();
-        return list;
-    }*/
+    @GetMapping("/user/add")
+    public String add(Model model) {
+        model.addAttribute("user", new User());
+        return "user/adduser";
+    }
+
+    @PostMapping(value="/add_user")
+    public String addUser(@ModelAttribute() @Valid User user, Errors errors){
+        if (errors.hasErrors()) {
+            return "user/adduser";
+        }
+        userMapper.addUser(user);
+        return "redirect:/user/list";
+    }
+
+
 }
 
