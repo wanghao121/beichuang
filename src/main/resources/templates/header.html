@@ -15,7 +15,11 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <span class="m-r-sm text-muted welcome-message">贝创乐高普陀店</span>
+                <span class="m-r-sm text-muted welcome-message">
+                    <script>
+                        document.write(new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay()));
+                    </script>
+                </span>
             </li>
             <li>
                 <a href="../login">
@@ -26,6 +30,7 @@
 
     </nav>
 </div>
+
 
 </body>
 </html>
