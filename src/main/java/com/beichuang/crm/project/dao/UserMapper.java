@@ -17,12 +17,13 @@ import java.util.List;
  */
 public interface UserMapper extends BaseMapper<User> {
 
-    @Select("select * from sys_user where login_name = #{loginName}")
+    @Select("select * from sys_user where login_name = #{loginName} ")
     User selectUserByName(String loginName);
 
-    @Select("select * from sys_user where login_name <>'admin' ")
+    @Select("select * from sys_user where login_name <>'admin' order by user_id desc")
     List<User> selectUserList();
 
-    @Insert("insert into sys_user (user_name) values (#{userName}) ")
+    @Insert("insert into sys_user (user_name,login_name,phone,sex,user_type,remark) " +
+            "values (#{userName},#{loginName},#{phone},#{sex},#{userType},#{remark}) ")
     Integer addUser(User user);
 }

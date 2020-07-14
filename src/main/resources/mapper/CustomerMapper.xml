@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beichuang.crm.project.dao.CustomerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.beichuang.crm.project.entity.Customer">
+        <id column="c_id" property="cId" />
+        <result column="c_name" property="cName" />
+        <result column="nick_name" property="nickName" />
+        <result column="birthday" property="birthday" />
+        <result column="phone" property="phone" />
+        <result column="sex" property="sex" />
+        <result column="c_type" property="cType" />
+        <result column="remark" property="remark" />
+        <result column="follow_time" property="followTime" />
+        <result column="sign_time" property="signTime" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        c_id, c_name, nick_name, birthday, phone, sex, c_type, remark, follow_time, sign_time, create_time, update_time
+    </sql>
+
+</mapper>

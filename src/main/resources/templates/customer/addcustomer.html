@@ -18,6 +18,10 @@
     <!-- Data Tables -->
     <link th:href="@{../css/plugins/dataTables/datatables.min.css}" rel="stylesheet">
 
+    <!-- 日期 -->
+    <link th:href="@{../css/bootstrap-datetimepicker.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{../css/bootstrap-datetimepicker.min.css}" rel="stylesheet" media="screen"/>
+
     <link th:href="@{../css/animate.css}" rel="stylesheet">
     <link th:href="@{../css/style.css}" rel="stylesheet">
 
@@ -34,7 +38,7 @@
         <!--页头-->
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>新增员工</h2>
+                <h2>新增客户</h2>
             </div>
             <div class="col-lg-2">
 
@@ -46,28 +50,30 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form id="formTag" action="/add_user" method="POST" class="form-horizontal" th:object="${user}">
+                        <form id="formTag" action="/add_customer" method="POST" class="form-horizontal"
+                              th:object="${customer}">
 
                             <div class="form-group">
-                                <label for="userName" class="col-sm-2 control-label">姓名</label>
+                                <label for="cName" class="col-sm-2 control-label">姓名</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="userName" name="userName" autocomplete="off"
-                                           th:field="*{userName}"
+                                    <input type="text" class="form-control" id="cName" name="cName" autocomplete="off"
+                                           th:field="*{cName}"
                                            placeholder="请输入姓名">
                                 </div>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                <span class="text-danger" th:if="${#fields.hasErrors('userName')}"
-                                      th:errors="*{userName}">
+                                <span class="text-danger" th:if="${#fields.hasErrors('cName')}"
+                                      th:errors="*{cName}">
 					请输入姓名
 				</span>
                             </div>
 
                             <div class="form-group">
-                                <label for="loginName" class="col-sm-2 control-label">别名</label>
+                                <label for="nickName" class="col-sm-2 control-label">昵称</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="loginName" name="loginName" autocomplete="off"
-                                           th:field="*{loginName}"
-                                           placeholder="请输入别名">
+                                    <input type="text" class="form-control" id="nickName" name="nickName"
+                                           autocomplete="off"
+                                           th:field="*{nickName}"
+                                           placeholder="请输入昵称">
                                 </div>
                             </div>
 
@@ -83,7 +89,7 @@
                             <div class="form-group">
                                 <label for="sex" class="col-sm-2 control-label">性别</label>
                                 <div class="col-sm-10">
-                                    <select name="sex" id="sex" class="form-control" >
+                                    <select name="sex" id="sex" class="form-control">
                                         <option value="0">男</option>
                                         <option value="1">女</option>
                                     </select>
@@ -91,13 +97,20 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="userType" class="col-sm-2 control-label">员工类型</label>
+                                <label for="birthday" class="col-sm-2 control-label">出生年月</label>
                                 <div class="col-sm-10">
-                                    <select name="userType" id="userType" class="form-control" >
-                                        <option value="T">老师</option>
-                                        <option value="S">销售</option>
-                                        <option value="O">其他</option>
-                                    </select>
+                                    <input type="text" class="form-control" id="birthday" name="birthday"
+                                           autocomplete="off"
+                                           th:field="*{birthday}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signTime" class="col-sm-2 control-label">签约时间</label>
+                                <div class="col-sm-10" >
+                                    <input type="text" class="form-control" id="signTime" name="signTime"
+                                           autocomplete="off"
+                                           th:field="*{signTime}">
                                 </div>
                             </div>
 
@@ -146,6 +159,10 @@
 <!-- Data Tables -->
 <script th:src="@{../js/plugins/dataTables/datatables.min.js}"></script>
 
+<!-- 日期 -->
+<script th:src="@{../js/bootstrap-datetimepicker.js}"></script>
+<script th:src="@{../js/locales/bootstrap-datetimepicker.zh-CN.js}"></script>
+
 <!-- Custom and plugin javascript -->
 <script th:src="@{../js/inspinia.js}"></script>
 <!-- 进度条 -->
@@ -165,7 +182,23 @@
 
             $("#formTag").submit();
         });
+
+        $('#signTime').val(new Date().toLocaleString().substring(0,10));
     });
+
+    $('#signTime').datetimepicker({
+        format: "yyyy/mm/dd",
+        autoclose: true,
+        todayBtn: true,
+        todayHighlight: true,
+        showMeridian: true,
+        endDate:new Date(),
+        pickerPosition: "bottom-right",
+        language: 'zh-CN',//中文，需要引用zh-CN.js包
+        startView: 2,//月视图
+        minView: 2//日期时间选择器所能够提供的最精确的时间选择视图
+    });
+
 </script>
 
 </body>
